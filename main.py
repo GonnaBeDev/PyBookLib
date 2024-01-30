@@ -246,11 +246,7 @@ class Library:
         
         while True:
             print(f'Existing genres:\n{menu}')
-            user_input_menu_option = input(f'''
-                Choose one by typing in a digit
-                {", or provide a new one:" if allow_add_new_genre else ":"}
-                \n>> 
-                                            ''')
+            user_input_menu_option = input(f'''Choose one by typing in a digit{", or provide a new one:" if allow_add_new_genre else ":"}\n>> ''')
             if user_input_menu_option.isdigit():
                 genre = self.menu_tools.get_choosed_menu_option(
                     menu, user_input_menu_option)
@@ -314,11 +310,7 @@ class Library:
         the class to perform database operations and handle user interactions.
         """
 
-        print('''
-              NOTICE: search will be performed between author and title of
-              the book.
-              \nMay not work properly if you use non-English letters.\n\n
-              ''')
+        print('''NOTICE: search will be performed between author and title of the book. \nMay not work properly if you use non-English letters.\n\n''')
         
         current_page = 0
 
@@ -392,6 +384,7 @@ class Library:
 
         while True:
             genre = self._choose_genre_menu(allow_add_new_genre=False)
+            print(genre)
             all_books_list = self.db.get_all_books_by_genre(genre)
             if not all_books_list:
                 print('No books with choosen genre found, try another one')
